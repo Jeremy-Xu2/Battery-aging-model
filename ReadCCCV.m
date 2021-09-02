@@ -109,4 +109,4 @@ subplot(2,1,2)
 figure(2)
 load('LGC_2C.mat')
 plot(1:length(sim.V),sim.V, 1:1731, LGC_2C)
-    
+saveas(gcf,'CCCV.png')    
