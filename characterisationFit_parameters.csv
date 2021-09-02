@@ -1,0 +1,48 @@
+Rdc,0.010001
+Dp,3.46e-17
+Dn,1.06132e-15
+kp,1.36715e-09
+kn,3.41765e-13
+temperature,298
+combined RMSE,0.394728
+
+ this was for the following cycles
+name of the data file,length of the data file,C rate of the CC phase,C rate of the limit current for the CV phase,RMSE,weight
+Characterisation_0.5C_CC_discharge.csv,864,0.5,100,1.02743,0.2
+Characterisation_1C_CC_discharge.csv,344,1,100,0.528868,0.2
+Characterisation_2C_CC_discharge.csv,174,2,100,0.417347,0.2
+
+
+Below are the settings which produced this result
+temperature,298
+electrode surface,0.0982
+cathode active volume fraction,0.5
+anode active volume fraction,0.5
+cathode thickness,7.52e-05
+anode thickness,8.52e-05
+cathode initial li-fraction at 50% SoC,0.58725
+anode initial li-fraction at 50% SoC,0.46465
+maximum voltage,4.2
+minimum voltage,2.5
+maximum li-concentration in the cathode,51385
+maximum li-concentration in the anode,30555
+name of the file with the cathode OCV curve,OCVfit_cathode.csv
+name of the file with the anode OCV curve,OCVfit_anode.csv
+
+Below are the settings of the initial search space
+number of steps in the search space for the diffusion constant,10
+minimum cathode diffusion constant,1e-18
+minimum anode diffusion constant,1e-18
+initial step size for the cathode diffusion constant,13
+initial step size for the anode diffusion constant,13
+logarithmic steps for the diffusion constant?,1
+number of steps in the search space for the rate constant,10
+minimum cathode rate constant,1e-18
+minimum anode rate constant,1e-18
+initial step size for the cathode rate constant,13
+initial step size for the anode rate constant,13
+logarithmic steps for the rate constant?,1
+number of steps in the search space for the DC resistance,6
+minimum DC resistance,1e-06
+initial step size in the search for the DC constant,0.005
+number of levels in the search hierarchy,3
