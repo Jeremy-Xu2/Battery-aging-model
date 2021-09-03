@@ -96,9 +96,9 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 	s_lares_n_prev = 0;
 
 	// main Li reaction
-	kp = 0.9*pow(10,-12);				// fitting parameter
+	kp = 1.8*pow(10,-12);				// fitting parameter
 	kp_T = 58000;
-	kn = 4*pow(10,-10);					// fitting parameter
+	kn = 8*pow(10,-10);					// fitting parameter
 	kn_T = 20000;
 	// The diffusion coefficients at reference temperature are part of 'State'.
 	// The values are set in the block of code below ('Initialise state variables')

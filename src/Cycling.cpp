@@ -254,7 +254,7 @@ void CCCV_1(const struct Model& M, string pref, const struct DEG_ID& degid, int 
 	cycler.CC_V_CV_I(Crate, Vmax, Ccut_cha, dt, blockDegradation, &ahi, &whi, &timei);
 
 	// Do a full 0.5C cycle
-	Crate = 2;
+	Crate = 1;
 	cycler.CC_V(Crate*capnom, dt, blockDegradation, Vmin, &ahi, &whi, &timei);
 //	cycler.CC_V_CV_I(Crate, Vmax, Ccut_dis, dt, blockDegradation, &ahi, &whi, &timei);
 //
