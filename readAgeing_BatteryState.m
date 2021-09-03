@@ -66,7 +66,7 @@ figure()
 for i=1:length(IDs)
     c = col(i,:);                                   % colour for this regime
     if FECx
-        plot(state{i}.FEC,state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis
+        plot(state{i}.cycleNr,state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis
     else
         plot(state{i}.time,state{i}.cap_rel,'color',c); % use 'time' as x-axis
     end
@@ -76,13 +76,13 @@ end
 % Make legend, labels & title
 legend(IDs);
 if FECx
-    xlabel('full equivalent cycles [-]');
+    xlabel('cycles [-]');
 else
     xlabel('time [hour]')
 end
 ylabel('capacity [%]');
 title('Remaining capacity')
-
+saveas(gcf,'Capacity_Ret.png')    
 %% Plot the degradation details
 % Make a figure with the subplots for every state of the battery related to
 % battery degradation
@@ -357,5 +357,6 @@ subplot(4,4,14)
     title('thickness of the plated li layer')
     ylabel('[m]')
     ylim([0.9*m (1.1*M+10^(-9))]);
+    saveas(gcf,'Internal_property.png')    
     
 

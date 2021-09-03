@@ -15,7 +15,7 @@ clear
 % main()-function in Main.cpp
 
 % The value of the prefix (pref in c++)
-pref = '19';                   
+pref = '0';                   
 
 % The vlaue of the struct which defined which degradation models were used
 % (deg in c++). Note that in Matlab we can directly input the arrays (e.g.
@@ -44,7 +44,7 @@ pl_id = [1];                            % which li-plating model(s) was (were) u
 %     'T45_03C05D_SoC0-100','T45_03C05D_SoC10-90','T45_03C1D_SoC0-100',...
 %     'T45_03C1D_SoC10-90','T45_1C1D_SoC0-100','T45_1C1D_SoC10-90'};
 
-IDs = {'T25_03C05D_SoC10-90','T40_03C05D_SoC10-90'};
+IDs = {'T25_03C05D_SoC10-90','T25_03C1D_SoC10-90','T25_1C1D_SoC10-90'};
 
 % Degradation identifier
 ageingID = printDEGID(sei_id, sei_por, CS_id, CS_diff, LAM_id, pl_id);  

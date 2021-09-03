@@ -512,7 +512,7 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 		std::thread cyc1(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name); 	// make a new thread and simulate this
 
 		// T=45, 2C charge, 1C discharge , 0-100%
-		cout<<"Cycle 2 T40, 0.3C0.5D, 10-90%"<<endl;
+		cout<<"Cycle 2 T25, 0.3C1D, 10-90%"<<endl;
 		Vma = 4.1;
 		Vmi = 2.85;
 		Ti = 273+25;
@@ -522,14 +522,14 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 		std::thread cyc2(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
 
 		//T=45, 3C, 0-100%
-//		cout<<"Cycle 3 T25, 0.3C1D, 0-100%"<<endl;
-//		Vma = 4.2;
-//		Vmi = 2.7;
-//		Ti = 273+25;
-//		Ccha = 0.33;
-//		Cdis = 1;
-//		name = pref + "T25_03C1D_SoC0-100";
-//		std::thread cyc3(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
+		cout<<"Cycle 3 T25, 1C1D, 10-90%"<<endl;
+		Vma = 4.1;
+		Vmi = 2.85;
+		Ti = 273+25;
+		Ccha = 1;
+		Cdis = 1;
+		name = pref + "T25_1C1D_SoC10-90";
+		std::thread cyc3(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
 
 		// We have now started three threads (called cyc1, cyc2 and cyc3).
 		// We want to have 3 running at the same time, so we need to join them here.
@@ -541,7 +541,7 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 			// do the same for the other threads.
 	cyc1.join();
 	cyc2.join();
-//	cyc3.join();
+	cyc3.join();
 
 //	cout<<pref<<"\t Batch 2"<<endl;
 //

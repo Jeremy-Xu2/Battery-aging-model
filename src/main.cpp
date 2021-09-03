@@ -122,7 +122,7 @@ int main(int argv, char* argc[]){
 	// For now, assume we want to include 'Pinson&Bazant'-SEI growth, 'Delacourt'-LAM, 'Kindermann'-LAM and 'Yang'-lithium plating
 	DEG_ID deg;
 		deg.SEI_n = 1;										// there is 1 SEI model
-		deg.SEI_id[0] = 1;									// Pinson & Bazant SEI growth
+		deg.SEI_id[0] = 2;									// Pinson & Bazant SEI growth
 		deg.SEI_porosity = 0;								// don't decrease the porosity (set to 1 if you do want to decrease the porosity)
 
 		deg.CS_n = 1;										// there is 1 model (that there are no cracks)
@@ -133,7 +133,7 @@ int main(int argv, char* argc[]){
 		deg.LAM_id[0] = 2;									// Delacourt LAM
 		deg.LAM_id[1] = 3;									// Kindermann LAM
 
-		deg.pl_id = 0;										// Yang litihium plating
+		deg.pl_id = 1;										// Yang litihium plating
 
 	// Then the user has to choose what is simulated.
 	// In the code below, uncomment the line which calls the function you want to execute (uncommenting means removing the // in front of the line)
@@ -145,13 +145,13 @@ int main(int argv, char* argc[]){
 //	estimateCharacterisation(); 							// parametrisation of diffusion constant, rate constant and DC resistance
 	cout<<"after deg"<<endl;
 	// *********************************************** CYCLING FUNCTION CALLS ********************************************************
-	CCCV_1(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
+	CCCV(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
 //	FollowCurrent(M, pref, deg, cellType, verbose); 		// a cell follows the current profile specified in a csv file
 
 	// *********************************************** DEGRADATION FUNCTION CALLS ********************************************************
 //	cout<<"after cccv"<<endl;
 //	CalendarAgeig(M, pref, deg,cellType, verbose);		// simulates a bunch of calendar degradation experiments
-//	CycleAgeing(M, pref, deg, cellType, verbose);			// simulates a bunch of cycle degradation experiments
+	CycleAgeing(M, pref, deg, cellType, verbose);			// simulates a bunch of cycle degradation experiments
 //	ProfileAgeing(M, pref, deg, cellType, verbose);		// simulates a bunch of drive cycle degradation experiments
 
 	// *********************************************** END ********************************************************
