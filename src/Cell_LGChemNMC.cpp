@@ -196,8 +196,8 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 	ap		= 3*ep/Rp;				// effective surface area of the cathode, the 'real' surface area is the product of the effective surface area (a) with the electrode volume (elec_surf * thick)
 	an 		= 3*en/Rn;				// effective surface area of the anode
 	CS		= 0.01*an*elec_surf*thickn;	// initial crack surface. Start with 1% of the real surface area
-	Dp 		= pow(10,-14);			// diffusion constant of the cathode at reference temperature
-	Dn 		= 3*pow(10,-14);		// diffusion constant of the anode at reference temperature
+	Dp 		= pow(10,-13);			// diffusion constant of the cathode at reference temperature
+	Dn 		= 3*pow(10,-13);		// diffusion constant of the anode at reference temperature
 	R		= Rdc * ( (thickp*ap*elec_surf + thickn*an*elec_surf)/2 );// specific resistance of the combined electrodes, see State::iniStates
 	delta_pl = 0;					// thickness of the plated lithium layer. You can start with 0 here
 	s.initialise(nch, up, un, T, delta, LLI, thickp, thickn, ep, en, ap, an, CS, Dp, Dn, R, delta_pl); // set the states, with a random value for the concentration

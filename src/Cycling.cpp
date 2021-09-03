@@ -251,7 +251,7 @@ void CCCV_1(const struct Model& M, string pref, const struct DEG_ID& degid, int 
 	// It automatically collects the data while the cell is being loaded.
 
 	// Charge the cell
-//	cycler.CC_V_CV_I(Crate, Vmax, Ccut_cha, dt, blockDegradation, &ahi, &whi, &timei);
+	cycler.CC_V_CV_I(Crate, Vmax, Ccut_cha, dt, blockDegradation, &ahi, &whi, &timei);
 
 	// Do a full 0.5C cycle
 	Crate = 2;

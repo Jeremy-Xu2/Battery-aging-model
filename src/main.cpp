@@ -145,7 +145,7 @@ int main(int argv, char* argc[]){
 //	estimateCharacterisation(); 							// parametrisation of diffusion constant, rate constant and DC resistance
 	cout<<"after deg"<<endl;
 	// *********************************************** CYCLING FUNCTION CALLS ********************************************************
-	CCCV(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
+	CCCV_1(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
 //	FollowCurrent(M, pref, deg, cellType, verbose); 		// a cell follows the current profile specified in a csv file
 
 	// *********************************************** DEGRADATION FUNCTION CALLS ********************************************************
