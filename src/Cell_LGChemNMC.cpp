@@ -229,7 +229,7 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 		// fitting parameters of the models
 		csparam.CS1alpha = 7.5 * pow(10,-4);
 		csparam.CS2alpha = 7.5 * pow(10,-5);
-		csparam.CS3alpha = 3.75 * pow(10,-15);
+		csparam.CS3alpha = 3.75 * pow(10,-13);
 		csparam.CS4alpha = 7.44 * pow(10,-8);
 		csparam.CS4Amax = 5*getAnodeSurface(); // assume the maximum crack surface is 5 times the initial surface
 		csparam.CS5k = pow(10,-15);
@@ -257,7 +257,7 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 		OCVpl = 0;
 		rhopl = 10000*pow(10,3);
 		// fitting parameters of the models
-		plparam.pl1k = 2.25*pow(10,-13);  //2.25*pow(10,-8)
+		plparam.pl1k = 2.25*pow(10,-8);  //2.25*pow(10,-8)
 		plparam.pl1k_T = -1.0070 * pow(10,5);
 
 	// degradation identifiers: no degradation

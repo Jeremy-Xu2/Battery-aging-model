@@ -462,9 +462,9 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 		struct checkUpProcedure proc;
 		proc.blockDegradation = true; 								// boolean indicating if degradation is accounted for during the check-up, [RECOMMENDED: TRUE]
 		proc.capCheck = true;										// boolean indicating if the capacity should be checked
-		proc.OCVCheck = true;										// boolean indicating if the half-cell OCV curves should be checked
-		proc.CCCVCheck = true;										// boolean indicating if some CCCV cycles should be done as part of the check-up procedure
-		proc.pulseCheck = true;										// boolean indicating if a pulse discharge test should be done as part of the check-up procedure
+		proc.OCVCheck = false;										// boolean indicating if the half-cell OCV curves should be checked
+		proc.CCCVCheck = false;										// boolean indicating if some CCCV cycles should be done as part of the check-up procedure
+		proc.pulseCheck = false;										// boolean indicating if a pulse discharge test should be done as part of the check-up procedure
 		proc.includeCycleData = true;								// boolean indicating if the cycling data from the check-up should be included in the cycling data of the cell or not
 		proc.nCycles = 3;											// number of different cycles to be simulated for the CCCV check-up (i.e. the length of the array crates)
 																	// If you change this variable, also change it in the mablab script which reads the results from the check-up (the variable Crates in readAgeing_CCCV.m)

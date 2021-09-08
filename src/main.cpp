@@ -126,14 +126,14 @@ int main(int argv, char* argc[]){
 		deg.SEI_porosity = 0;								// don't decrease the porosity (set to 1 if you do want to decrease the porosity)
 
 		deg.CS_n = 1;						 				// there is 1 model (that there are no cracks)
-		deg.CS_id[0] = 2;									// no surface cracks
+		deg.CS_id[0] = 0;									// no surface cracks
 		deg.CS_diffusion = 1;								// don't decrease the diffusion coefficient (set to 1 if you do want to decrease the diffusion)
 
 		deg.LAM_n = 0;										// there are 2 LAM models (Delacourt and Kindermann)
 		deg.LAM_id[0] = 2;									// Delacourt LAM
 		deg.LAM_id[1] = 3;									// Kindermann LAM
 
-		deg.pl_id = 1;										// Yang litihium plating
+		deg.pl_id = 0;										// Yang litihium plating
 
 	// Then the user has to choose what is simulated.
 	// In the code below, uncomment the line which calls the function you want to execute (uncommenting means removing the // in front of the line)

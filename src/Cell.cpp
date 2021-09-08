@@ -1019,7 +1019,12 @@ void Cell::SEI(double OCVnt, double etan, double* isei, double* den){
 			break;
 		case 1 :						// Kinetic model according to Ning & Popov, Journal of the Electrochemical Society 151 (10), 2004
 			kseit = seiparam.sei1k*exp(seiparam.sei1k_T/Rg*(1/T_ref - 1/s.getT())); 		// Arrhenius relation for the rate parameter at the cell temperature
-			is += nsei*F*kseit*exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell)); // Add the effect of this model
+			if (Icell < 0) {
+				is += nsei*F*kseit*(1-12.7*Icell/3.5) *exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+			} else {
+				is += nsei*F*kseit*exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+			}
+//			is += nsei*F*kseit*exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell)); // Add the effect of this model
 				// eta_sei = OCVneg + etaneg - OCVsei + Rsei*I
 				// isei = nFk exp(-nF/RT alpha eta_sei)
 				// on charge, I < 0 and etan < 0.
@@ -1037,7 +1042,13 @@ void Cell::SEI(double OCVnt, double etan, double* isei, double* den){
 				// j/nF = D/delta (- j/(nFk exp(..)) + c0)
 				// j * ( 1/(nFk exp(..)) + delta/DnF ) = c0
 				// j = c0 / ( 1/(nFk exp(..)) + delta/DnF )
-			isei2 = nsei*F*kseit* exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+//			cout<<Icell<<endl;
+			if (Icell < 0) {
+				isei2 = nsei*F*kseit*(1-6.7*Icell/3.5) *exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+			}
+			else {
+				isei2 = nsei*F*kseit*exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+			}
 			isei3 = s.getDelta()/(nsei * F * Dseit);
 			is += c_elec0 / (1/isei2 + isei3);												// Add the effects of this model
 			break;
