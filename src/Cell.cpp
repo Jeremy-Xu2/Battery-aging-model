@@ -1019,8 +1019,20 @@ void Cell::SEI(double OCVnt, double etan, double* isei, double* den){
 			break;
 		case 1 :						// Kinetic model according to Ning & Popov, Journal of the Electrochemical Society 151 (10), 2004
 			kseit = seiparam.sei1k*exp(seiparam.sei1k_T/Rg*(1/T_ref - 1/s.getT())); 		// Arrhenius relation for the rate parameter at the cell temperature
+			// Get the surface concentrations
+			double cps, cns;
+			int K;
+			getCSurf(&cps, &cns);
+			if (cns/Cmaxneg < 0.3) {
+				K = 1;
+			} else if (cns/Cmaxneg > 0.7) {
+				K = 2;
+			} else {
+				K = 0;
+			}
+
 			if (Icell < 0) {
-				is += nsei*F*kseit*(1-12.7*Icell/3.5) *exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
+				is += nsei*F*kseit*(1-12.7*Icell/3.5*K) *exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
 			} else {
 				is += nsei*F*kseit*exp(-nsei*F/(Rg*s.getT()) * alphasei * (OCVnt + etan - OCVsei + Rsei*s.getDelta()*Icell));
 			}
