@@ -1133,9 +1133,12 @@ void Cycler::cycleAgeing(double dt, double Vma, double Vmi, double Ccha, bool CV
 				CC_V_CV_I(Cdis, Vmi, Ccutdis, dt, blockDegradation, &ahi, &whi, &ti);// CC and CV discharge
 			else
 				CC_V(Cdis*capnom, dt, blockDegradation, Vmi, &ahi, &whi, &ti);		// CC discharge (must have current as input, not C rate)
-			Ahtot += abs(ahi);														// increase the charge throughput with the throughput of this discharge
-			Whtot += abs(whi);														// increase the energy throughput with the throughput of this discharge
-			timetot += (ti/3600);													// increase the total time the time of this discharge
+			if (fmod(i+1,nrCap) == 1){
+				Ahtot = abs(ahi);														// increase the charge throughput with the throughput of this discharge
+				Whtot = abs(whi);														// increase the energy throughput with the throughput of this discharge
+				timetot = (ti/3600);													// increase the total time the time of this discharge
+
+			}
 
 			// charge
 			if(verbose >= printCyclerHighLevel)
@@ -1144,9 +1147,9 @@ void Cycler::cycleAgeing(double dt, double Vma, double Vmi, double Ccha, bool CV
 				CC_V_CV_I(Ccha, Vma, Ccutcha, dt, blockDegradation, &ahi, &whi, &ti);// CC and CV charge
 			else
 				CC_V(-Ccha*capnom, dt, blockDegradation, Vma, &ahi, &whi, &ti);		// CC charge (must have current as input, not C rate)
-			Ahtot += abs(ahi);														// increase the charge throughput with the throughput of this charge
-			Whtot += abs(whi);														// increase the energy throughput with the throughput of this charge
-			timetot += (ti/3600);													// increase the total time the time of this charge
+//			Ahtot += abs(ahi);														// increase the charge throughput with the throughput of this charge
+//			Whtot += abs(whi);														// increase the energy throughput with the throughput of this charge
+//			timetot += (ti/3600);													// increase the total time the time of this charge
 
 			// do a check-up every nrCap cycles
 			// 	i is the cycle number, so when it is a multiple of nrCap we need to do a check-up

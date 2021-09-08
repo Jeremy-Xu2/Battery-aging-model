@@ -33,7 +33,7 @@ for i=1:length(IDs)
     state{i}.text = na;                             % name of the file
     na(strfind(na,'_')) = ' ';                      % name with space instead of _
     state{i}.name = strcat(ageingID,'-',na);
-    state{i}.cap = A(:,5);                          % remaining capacity [Ah]
+    state{i}.cap = A(2:end,3);                          % remaining capacity [Ah]
     capini = state{i}.cap(1);                       % initial capacity [Ah]
     state{i}.cycleNr = A(:,1);                      % cycle number [-]
     state{i}.time = A(:,2);                         % cumulative time since the start [hour]
@@ -66,7 +66,7 @@ figure()
 for i=1:length(IDs)
     c = col(i,:);                                   % colour for this regime
     if FECx
-        plot(state{i}.cycleNr,state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis
+        plot(state{i}.cycleNr(1:end-1),state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis
     else
         plot(state{i}.time,state{i}.cap_rel,'color',c); % use 'time' as x-axis
     end
@@ -94,7 +94,7 @@ subplot(4,4,1)
         c = col(i,:);  
         y = state{i}.delta;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -113,7 +113,7 @@ subplot(4,4,2)
         c = col(i,:);   
         y = state{i}.LLI/3600;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -132,7 +132,7 @@ subplot(4,4,3)
         c = col(i,:);    
         y = state{i}.thickp;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -151,7 +151,7 @@ subplot(4,4,4)
         c = col(i,:);    
         y = state{i}.thickn;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -170,7 +170,7 @@ subplot(4,4,5)
         c = col(i,:);    
         y = state{i}.ep;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -189,7 +189,7 @@ subplot(4,4,6)
         c = col(i,:);   
         y = state{i}.en;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -208,7 +208,7 @@ subplot(4,4,7)
         c = col(i,:);    
         y = state{i}.ap;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -227,7 +227,7 @@ subplot(4,4,8)
         c = col(i,:);    
         y = state{i}.an;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -246,7 +246,7 @@ subplot(4,4,9)
         c = col(i,:);   
         y = state{i}.An;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -265,7 +265,7 @@ subplot(4,4,10)
         c = col(i,:);       
         y = state{i}.CS;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -288,7 +288,7 @@ subplot(4,4,11)
         c = col(i,:);   
         y = state{i}.Dp;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -307,7 +307,7 @@ subplot(4,4,12)
         c = col(i,:);           
         y = state{i}.Dn;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -326,7 +326,7 @@ subplot(4,4,13)
         c = col(i,:);         
         y = state{i}.R; 
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end
@@ -345,7 +345,7 @@ subplot(4,4,14)
         c = col(i,:);           
         y = state{i}.deltapl;
         if FECx
-            x = state{i}.FEC;
+            x = state{i}.cycleNr;
         else
             x = state{i}.time;
         end

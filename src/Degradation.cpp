@@ -502,33 +502,33 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 
 		// cycle at environmental temperature T=45, 1C charge, 1C discharge, SoC windows 0-100%
 		cout<<"Cycle 1 T25, 0.3C0.5D, 10-90%"<<endl;					// print a message to the user saying which cycle we are simulating
-		Vma = 4.1;
-		Vmi = 2.85;
+		Vma = 4.2;
+		Vmi = 2.5;
 		Ti = 273+25;
 		Ccha = 0.3;
 		Cdis = 0.5;
-		name = pref + "T25_03C05D_SoC10-90";
+		name = pref + "T25_03C05D_SoC0-100";
 		//Cycle_one(M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);					// simulate this (without using multi-threaded computation
 		std::thread cyc1(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name); 	// make a new thread and simulate this
 
 		// T=45, 2C charge, 1C discharge , 0-100%
 		cout<<"Cycle 2 T25, 0.3C1D, 10-90%"<<endl;
-		Vma = 4.1;
-		Vmi = 2.85;
+		Vma = 4.2;
+		Vmi = 2.5;
 		Ti = 273+25;
 		Ccha = 0.3;
 		Cdis = 1;
-		name = pref + "T25_03C1D_SoC10-90";
+		name = pref + "T25_03C1D_SoC0-100";
 		std::thread cyc2(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
 
 		//T=45, 3C, 0-100%
-		cout<<"Cycle 3 T25, 1C1D, 10-90%"<<endl;
-		Vma = 4.1;
-		Vmi = 2.85;
+		cout<<"Cycle 3 T25, 2C1D, 10-90%"<<endl;
+		Vma = 4.2;
+		Vmi = 2.5;
 		Ti = 273+25;
 		Ccha = 1;
 		Cdis = 1;
-		name = pref + "T25_1C1D_SoC10-90";
+		name = pref + "T25_1C1D_SoC0-100";
 		std::thread cyc3(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
 
 		// We have now started three threads (called cyc1, cyc2 and cyc3).

@@ -19,7 +19,7 @@ pref = '0';
 % The vlaue of the struct which defined which degradation models were used
 % (deg in c++). Note that in Matlab we can directly input the arrays (e.g.
 % if we used 2 models for one mechanism as is the case for LAM below)
-sei_id = [2];                           % which SEI model(s) was (were) used
+sei_id = [1];                           % which SEI model(s) was (were) used
 sei_por = 0;                            % whether the porosity was reduced (SEI_porosity from c++)
 CS_id = [0];                            % which crach growth model(s) was (were) used
 CS_diff = 0;                            % whether the diffusion constant was reduced (CS_diffusion from c++)
