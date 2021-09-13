@@ -122,12 +122,12 @@ int main(int argv, char* argc[]){
 	// For now, assume we want to include 'Pinson&Bazant'-SEI growth, 'Delacourt'-LAM, 'Kindermann'-LAM and 'Yang'-lithium plating
 	DEG_ID deg;
 		deg.SEI_n = 1;										// there is 1 SEI model
-		deg.SEI_id[0] = 1;									// Pinson & Bazant SEI growth
+		deg.SEI_id[0] = 2;									// Pinson & Bazant SEI growth
 		deg.SEI_porosity = 0;								// don't decrease the porosity (set to 1 if you do want to decrease the porosity)
 
 		deg.CS_n = 1;						 				// there is 1 model (that there are no cracks)
 		deg.CS_id[0] = 0;									// no surface cracks
-		deg.CS_diffusion = 1;								// don't decrease the diffusion coefficient (set to 1 if you do want to decrease the diffusion)
+		deg.CS_diffusion = 0;								// don't decrease the diffusion coefficient (set to 1 if you do want to decrease the diffusion)
 
 		deg.LAM_n = 0;										// there are 2 LAM models (Delacourt and Kindermann)
 		deg.LAM_id[0] = 2;									// Delacourt LAM
@@ -145,7 +145,7 @@ int main(int argv, char* argc[]){
 //	estimateCharacterisation(); 							// parametrisation of diffusion constant, rate constant and DC resistance
 	cout<<"after deg"<<endl;
 	// *********************************************** CYCLING FUNCTION CALLS ********************************************************
-	CCCV(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
+//	CCCV_1(M, pref, deg, cellType, verbose);				// a cell does a few CCCV cycles
 //	FollowCurrent(M, pref, deg, cellType, verbose); 		// a cell follows the current profile specified in a csv file
 
 	// *********************************************** DEGRADATION FUNCTION CALLS ********************************************************

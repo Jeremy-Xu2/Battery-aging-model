@@ -783,7 +783,7 @@ int BasicCycler::CC_t_V(double I, double dt, bool blockDegradation, double time,
 			// Get the voltage after the time step
 			c.getVoltage(verbose >= printCrit, &v, &ocvp, &ocvn, &etap, &etan, &rdrop, &tem);
 			// Get the surface concentrations
-
+//			cout<<v<<endl;
 			c.getCSurf(&cps, &cns);
 //			cout<<t<<"  "<<cps<<"  "<<cns<<endl;
 		}

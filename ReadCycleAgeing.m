@@ -20,10 +20,10 @@ pref = '0';
 % The vlaue of the struct which defined which degradation models were used
 % (deg in c++). Note that in Matlab we can directly input the arrays (e.g.
 % if we used 2 models for one mechanism as is the case for LAM below)
-sei_id = [1];                           % which SEI model(s) was (were) used
+sei_id = [2];                           % which SEI model(s) was (were) used
 sei_por = 0;                            % whether the porosity was reduced (SEI_porosity from c++)
 CS_id = [0];                            % which crach growth model(s) was (were) used
-CS_diff = 1;                            % whether the diffusion constant was reduced (CS_diffusion from c++)
+CS_diff = 0;                            % whether the diffusion constant was reduced (CS_diffusion from c++)
 LAM_id = [];                         % which LAM model(s) was (were) used
 pl_id = [0];                            % which li-plating model(s) was (were) used
 
@@ -44,7 +44,7 @@ pl_id = [0];                            % which li-plating model(s) was (were) u
 %     'T45_03C05D_SoC0-100','T45_03C05D_SoC10-90','T45_03C1D_SoC0-100',...
 %     'T45_03C1D_SoC10-90','T45_1C1D_SoC0-100','T45_1C1D_SoC10-90'};
 
-IDs = {'T25_03C05D_SoC0-100','T25_03C05D_SoC2-90','T25_03C05D_SoC6-90'};
+IDs = {'T40_03C05D_4.1-2.85','T25_03C05D_4.1-2.85','T25_03C1D_4.1-3','T10_03C105D_4.1-2.5'};
 
 % Degradation identifier
 ageingID = printDEGID(sei_id, sei_por, CS_id, CS_diff, LAM_id, pl_id);  

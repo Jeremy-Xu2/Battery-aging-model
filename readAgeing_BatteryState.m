@@ -66,15 +66,27 @@ figure()
 for i=1:length(IDs)
     c = col(i,:);                                   % colour for this regime
     if FECx
-        plot(state{i}.cycleNr(1:end-1),state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis
+        plot(state{i}.cycleNr(1:end-1),state{i}.cap_rel,'color',c); % use 'full equivalent cyles' as x-axis      
     else
         plot(state{i}.time,state{i}.cap_rel,'color',c); % use 'time' as x-axis
     end
     hold on
 end
 
+% plot LG testing data
+load('LG_41_285_0305_P40_y.mat');
+load('LG_41_285_0305_P25_y.mat');
+load('LG_41_30_0310_P25_y.mat');
+load('LG_41_25_0305_P10_y.mat');
+plot(0:100:1000, LG_41_285_0305_P40_y, 'o');
+plot(0:100:2500, LG_41_285_0305_P25_y, 'o');
+plot(0:100:1000, LG_41_30_0310_P25_y, 'o');
+plot(0:100:1000, LG_41_25_0305_P10_y, 'o'); 
+
 % Make legend, labels & title
-legend(IDs);
+legend('Model 4.1-2.85V 0305 40oC', 'Model 4.1-2.85V 0305 25oC', 'Model 4.1-3.0V 0310 25oC', 'Model 4.1-2.5V 0305 10oC',...
+    'LG 4.1-2.85V 0305 40oC','LG 4.1-2.85V 0305 25oC', 'LG 4.1-3.0V 0310 25oC','LG 4.1-2.5V 0305 10oC');
+
 if FECx
     xlabel('cycles [-]');
 else

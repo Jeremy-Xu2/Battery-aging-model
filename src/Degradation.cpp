@@ -450,7 +450,7 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 		double Ccutcha = 0.05;										// Crate of the cutoff current for the CV phase of the charge [-]
 		bool CVdis = false;											// we want to have a CC discharge (if true, then discharge has both a CC and CV phase)
 		double Ccutdis = 1.0;										// Crate of the cutoff current for the CV phase of the discharge [-]
-		int nrCycles = 7000;										// the number of cycles which has to be simulated
+		int nrCycles = 2500;										// the number of cycles which has to be simulated
 		int nrCap = 100;											// the number of cycles between check-ups
 		int timeCycleData = 60;										// time interval at which cycling data (voltage and temperature) has to be recorded [s]
 																	// 	0 means no data is recorded
@@ -501,34 +501,34 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 	cout<<pref<<"\t Batch 1"<<endl;
 
 		// cycle at environmental temperature T=45, 1C charge, 1C discharge, SoC windows 0-100%
-		cout<<"Cycle 1 T25, 0.3C0.5D, 10-90%"<<endl;					// print a message to the user saying which cycle we are simulating
-		Vma = 4.2;
-		Vmi = 2.5;
-		Ti = 273+25;
+		cout<<"Cycle 1 T40, 0.3C0.5D, 4.1-2.85"<<endl;					// print a message to the user saying which cycle we are simulating
+		Vma = 4.1;
+		Vmi = 2.85;
+		Ti = 273+40;
 		Ccha = 0.3;
 		Cdis = 0.5;
-		name = pref + "T25_03C05D_SoC0-100";
+		name = pref + "T40_03C05D_4.1-2.85";
 		//Cycle_one(M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);					// simulate this (without using multi-threaded computation
 		std::thread cyc1(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name); 	// make a new thread and simulate this
 
 		// T=45, 2C charge, 1C discharge , 0-100%
-		cout<<"Cycle 2 T25, 0.3C0.5D, 2-90%"<<endl;
+		cout<<"Cycle 2 T25, 0.3C0.5D, 4.1-2.85"<<endl;
+		Vma = 4.1;
+		Vmi = 2.85;
+		Ti = 273+25;
+		Ccha = 0.3;
+		Cdis = 0.5;
+		name = pref + "T25_03C05D_4.1-2.85";
+		std::thread cyc2(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
+
+		//T=45, 3C, 0-100%
+		cout<<"Cycle 3 T25, 0.31D, 4.1-3"<<endl;
 		Vma = 4.1;
 		Vmi = 3;
 		Ti = 273+25;
 		Ccha = 0.3;
-		Cdis = 0.5;
-		name = pref + "T25_03C05D_SoC2-90";
-		std::thread cyc2(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
-
-		//T=45, 3C, 0-100%
-		cout<<"Cycle 3 T25, 0.3C0.5D, 6-90%"<<endl;
-		Vma = 4.1;
-		Vmi = 3.3;
-		Ti = 273+25;
-		Ccha = 0.3;
-		Cdis = 0.5;
-		name = pref + "T25_03C05D_SoC6-90";
+		Cdis = 1;
+		name = pref + "T25_03C1D_4.1-3";
 		std::thread cyc3(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
 
 		// We have now started three threads (called cyc1, cyc2 and cyc3).
@@ -543,19 +543,19 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 	cyc2.join();
 	cyc3.join();
 
-//	cout<<pref<<"\t Batch 2"<<endl;
-//
-//		// T=45, 1C, 0-80%
-//		cout<<"Cycle 4 T25, 0.3C1D, 10-90%"<<endl;
-//		Vma = 4.1;
-//		Vmi = 3;
-//		Ti = 273+25;
-//		Ccha = 0.33;
-//		Cdis = 1;
-//		name = pref + "T25_03C1D_SoC10-90";
-//		std::thread cyc4(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
-//
-//		// T=45, 2C, 0-80%
+	cout<<pref<<"\t Batch 2"<<endl;
+
+		// T=45, 1C, 0-80%
+		cout<<"Cycle 4 T10, 0.3C0.5D, 4.1-2.5"<<endl;
+		Vma = 4.1;
+		Vmi = 2.5;
+		Ti = 273+10;
+		Ccha = 0.3;
+		Cdis = 0.5;
+		name = pref + "T10_03C105D_4.1-2.5";
+		std::thread cyc4(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
+
+		// T=45, 2C, 0-80%
 //		cout<<"Cycle 5 T=25, 1C1D, 0-100%"<<endl;
 //		Vma = 4.2;
 //		Vmi = 2.7;
@@ -574,9 +574,9 @@ void CycleAgeing(const struct Model& M, string pref, const struct DEG_ID& degid,
 //		Cdis = 1;
 //		name = pref + "T25_1C1D_SoC10-90";
 //		std::thread cyc6(Cycle_one,M, degid, cellType, verbose,Vma, Vmi, Ccha, CVcha, Ccutcha, Cdis, CVdis, Ccutdis, Ti, timeCycleData, nrCycles, nrCap, proc, name);
-//
-//	// if you want to have 7 threads, cut these three commands to below std::thread cyc7
-//	cyc4.join();
+
+	// if you want to have 7 threads, cut these three commands to below std::thread cyc7
+	cyc4.join();
 //	cyc5.join();
 //	cyc6.join();
 //

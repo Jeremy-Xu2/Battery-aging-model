@@ -210,7 +210,7 @@ void CCCV_1(const struct Model& M, string pref, const struct DEG_ID& degid, int 
 		c1 = Cell_user(M, degid, verbose);						// a user-defined cell
 
 	// Settings of the cycles
-	double T = 273+25;											// temperature at which the cycling should be done [K]
+	double T = 273+40;											// temperature at which the cycling should be done [K]
 	double Crate = 0.33;											// C rate of the current for the CC phase of the initial charge.
 	double Vmax = c1.getVmax();									// voltage to which the cell should be charged, use the maximum cell voltage [V]
 	double Vmin = c1.getVmin();									// voltage to which to discharge the cell, use the minimum cell voltage [V]

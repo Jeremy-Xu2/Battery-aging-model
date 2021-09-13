@@ -1125,7 +1125,7 @@ void Cycler::cycleAgeing(double dt, double Vma, double Vmi, double Ccha, bool CV
 
 	for (int i=0;i<nrCycles;i++){													// loop for the specified number of cycles
 		try{
-
+//			cout << i << endl;
 			// discharge
 			if(verbose >= printCyclerHighLevel)
 				cout<<"Cycler::cycleAgeing is discharging the cell in cycle number "<<i<<endl;

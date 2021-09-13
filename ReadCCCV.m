@@ -24,7 +24,7 @@ sei_por = 0;                            % whether the porosity was reduced (SEI_
 CS_id = [0];                            % which crach growth model(s) was (were) used
 CS_diff = 0;                            % whether the diffusion constant was reduced (CS_diffusion from c++)
 LAM_id = [];                         % which LAM model(s) was (were) used
-pl_id = [1];                            % which li-plating model(s) was (were) used
+pl_id = [0];                            % which li-plating model(s) was (were) used
 
 %% Read the simulation results
 

@@ -196,8 +196,8 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 	ap		= 3*ep/Rp;				// effective surface area of the cathode, the 'real' surface area is the product of the effective surface area (a) with the electrode volume (elec_surf * thick)
 	an 		= 3*en/Rn;				// effective surface area of the anode
 	CS		= 0.01*an*elec_surf*thickn;	// initial crack surface. Start with 1% of the real surface area
-	Dp 		= pow(10,-13);			// diffusion constant of the cathode at reference temperature
-	Dn 		= 3*pow(10,-13);		// diffusion constant of the anode at reference temperature
+	Dp 		= pow(10,-14);			// diffusion constant of the cathode at reference temperature
+	Dn 		= 3*pow(10,-14);		// diffusion constant of the anode at reference temperature
 	R		= Rdc * ( (thickp*ap*elec_surf + thickn*an*elec_surf)/2 );// specific resistance of the combined electrodes, see State::iniStates
 	delta_pl = 0;					// thickness of the plated lithium layer. You can start with 0 here
 	s.initialise(nch, up, un, T, delta, LLI, thickp, thickn, ep, en, ap, an, CS, Dp, Dn, R, delta_pl); // set the states, with a random value for the concentration
@@ -213,12 +213,12 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 		Vsei = 64.39;
 		c_elec0 = 4.541/1000;
 		// fitting parameters of the models
-		seiparam.sei1k = 0.075*pow(10,-13);
-		seiparam.sei1k_T = 130000;
-		seiparam.sei2k = 2.75*pow(10,-8);
-		seiparam.sei2k_T = 13000;
-		seiparam.sei2D = 2.5*pow(10,-10);
-		seiparam.sei2D_T = 200000;
+		seiparam.sei1k = 0.15*pow(10,-13);
+		seiparam.sei1k_T = 13000;
+		seiparam.sei2k = 4.5*pow(10,-12);
+		seiparam.sei2k_T = 45000;
+		seiparam.sei2D = 3.5*pow(10,-13);
+		seiparam.sei2D_T = 100000;
 		seiparam.sei3k = pow(10,-11);
 		seiparam.sei3k_T = 0;
 		seiparam.sei3D = 1.05*pow(10,-16);

@@ -32,7 +32,7 @@ void loadCSV_1col(string name, int nin, double x[]){
 	 */
 	ifstream inputfilex;
 	inputfilex.open(name);
-
+	cout<<name<<endl;
 	// check if we could open the file
 	if ( (inputfilex.rdstate() & std::ifstream::failbit ) != 0 ){
 		cerr << "Error in ReadCSVfiles::loadCSV_1col. File " << name << " could not be opened\n";
