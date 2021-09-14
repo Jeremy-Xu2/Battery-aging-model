@@ -215,7 +215,7 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 		// fitting parameters of the models
 		seiparam.sei1k = 0.15*pow(10,-13);
 		seiparam.sei1k_T = 13000;
-		seiparam.sei2k = 4.5*pow(10,-12);
+		seiparam.sei2k = 6.5*pow(10,-12);
 		seiparam.sei2k_T = 15000;
 		seiparam.sei2D = 1*pow(10,-14);
 		seiparam.sei2D_T = 100000;
