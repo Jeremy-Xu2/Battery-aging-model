@@ -78,14 +78,15 @@ load('LG_41_285_0305_P40_y.mat');
 load('LG_41_285_0305_P25_y.mat');
 load('LG_41_30_0310_P25_y.mat');
 load('LG_41_25_0305_P10_y.mat');
-plot(0:100:1000, LG_41_285_0305_P40_y, 'o');
-plot(0:100:2500, LG_41_285_0305_P25_y, 'o');
-plot(0:100:1000, LG_41_30_0310_P25_y, 'o');
-plot(0:100:1000, LG_41_25_0305_P10_y, 'o'); 
+RMSE = sqrt(mean((state{1}.cap_rel() - LG_41_285_0305_P40_y).^2));
+plot(0:100:1000, LG_41_285_0305_P40_y, 'o','color',col(1,:));
+plot(0:100:2500, LG_41_285_0305_P25_y, 'o','color',col(2,:));
+plot(0:100:1000, LG_41_30_0310_P25_y, 'o','color',col(3,:));
+plot(0:100:1000, LG_41_25_0305_P10_y, 'o','color',col(4,:)); 
 
 % Make legend, labels & title
-legend('Model 4.1-2.85V 0305 P40', 'Model 4.1-2.85 0305 P25', 'Model 4.1-3.0 0310 P25',...
-    'LG 4.1-2.85 0305 P40','LG 4.1 2.85 0305 P25', 'LG 4.1 3.0 0310 P25','LG 4.1 2.5 0305 P10');
+legend('Model 4.1-2.85V 0305 40oC', 'Model 4.1-2.85V 0305 25oC', 'Model 4.1-3.0V 0310 25oC', 'Model 4.1-2.5V 0305 10oC',...
+    'LG 4.1-2.85V 0305 40oC','LG 4.1-2.85V 0305 25oC', 'LG 4.1-3.0V 0310 25oC','LG 4.1-2.5V 0305 10oC');
 
 if FECx
     xlabel('cycles [-]');

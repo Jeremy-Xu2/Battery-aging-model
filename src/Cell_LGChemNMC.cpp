@@ -218,7 +218,7 @@ Cell_LGChemNMC::Cell_LGChemNMC(const Model& MM, int verbosei){
 		seiparam.sei2k = 6.5*pow(10,-12);
 		seiparam.sei2k_T = 15000;
 		seiparam.sei2D = 1*pow(10,-14);
-		seiparam.sei2D_T = 50000;
+		seiparam.sei2D_T = 75000;
 		seiparam.sei3k = pow(10,-11);
 		seiparam.sei3k_T = 0;
 		seiparam.sei3D = 1.05*pow(10,-16);
